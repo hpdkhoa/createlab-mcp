@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "createlab-mcp"
+version = "0.1.0"
+description = "Create Lab: Builds the rig, the holds and the clips for a new object."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=2.0,<3",
+    "weaponlab-mcp @ git+https://github.com/hpdkhoa/weaponlab-mcp.git",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+createlab-mcp = "createlab.server:main"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/createlab"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
